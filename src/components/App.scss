@@ -1,0 +1,86 @@
+:root{
+  //declaraciones globales
+
+  --font__size-root: 16px;
+  --primary__font-size: 16px;
+
+  --primary__background-color: rgba(88, 88, 238, 0.85);
+  --secondary__background-color: rgba(40, 40, 77, 0.85);
+
+  --primary__color: rgba(255, 255, 255, 1);
+  --secondary__color: rgb(136, 61, 61);
+
+  --primary__padding: 10px 15px;
+  --big-padding: 20px 30px;
+  --primary__margin: 15px;
+
+  //grid for full mobile
+  --grid__column: repeat(2, 1fr);
+  --grid__gap: 0.5rem;
+  --grid__background: #f8f8f8;
+
+  
+  //grid fro 640 screen
+  @media screen and (min-width:40em){
+      --grid__column: repeat(3, 1fr);
+      --grid__gap: 1rem;
+  }
+
+  //grid for 1024 screen
+  @media screen and (min-width:64em){
+      --grid__column: repeat(12, 1fr);
+      --grid__gap: 1.5rem;
+  }
+
+}
+
+@mixin full {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin center-vertical-horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin absolute-cover {
+  @include full;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: var(--grid__column);
+}
+
+.container{
+  grid-column: span 12;
+  padding: var(--big-padding);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 310px;
+}
+
+
+/* AJUSTES DE ESTILOS PARA DESKTOP */
+@media screen and (min-width:64em){
+  .container{
+      grid-column: 2 / 12; //en desktop ocupa desde la línea 2 hasta la 12
+  }
+}
